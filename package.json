@@ -15,7 +15,8 @@
     "dev:service-b": "cd service-b && npm run start:dev",
     "dev:service-clients": "cd service-clients && npm run start:dev",
     "dev:service-orders": "cd service-orders && npm run start:dev",
-    "dev:all": "turbo run start:dev --parallel"
+    "dev:all": "turbo run start:dev --parallel",
+    "test:artillery": "artillery run artillery-invoice.yml"
   },
   "devDependencies": {
     "turbo": "^2.6.1"

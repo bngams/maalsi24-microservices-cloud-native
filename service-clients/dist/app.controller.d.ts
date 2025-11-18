@@ -4,8 +4,8 @@ export declare class AppController {
     constructor(appService: AppService);
     generateInvoice(data: {
         clientId: string;
-    }): Promise<{
+    }): {
         message: string;
         invoiceId: string;
-    }>;
+    };
 }

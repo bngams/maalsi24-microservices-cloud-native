@@ -19,7 +19,7 @@ let AppService = class AppService {
     constructor(rabbitClient) {
         this.rabbitClient = rabbitClient;
     }
-    async generateInvoice(clientId) {
+    generateInvoice(clientId) {
         const invoiceData = {
             invoiceId: `INV-${Date.now()}`,
             clientId: clientId,

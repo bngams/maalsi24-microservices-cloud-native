@@ -52,17 +52,18 @@ This project demonstrates a microservices architecture with:
 
 ## Installation
 
-Install dependencies for all services:
+Install all dependencies for every service at once (using npm workspaces):
 
 ```bash
-# Gateway
-cd gateway && npm install
+npm install
+```
 
-# Service A
-cd ../service-a && npm install
+> This will install dependencies for gateway, service-a, service-b, service-clients, and service-orders in one step.
 
-# Service B
-cd ../service-b && npm install
+### (Optional) Install Turborepo globally for local CLI usage or use npx
+
+```bash
+npm install -g turbo
 ```
 
 ## Running the Services
@@ -77,23 +78,36 @@ RabbitMQ will be available at:
 - **AMQP**: `localhost:5672`
 - **Management UI**: http://localhost:15672 (admin/admin)
 
-### Start Microservices
 
-In separate terminals:
+### Start All Microservices (with Turborepo)
+
+You can start all services in parallel from the root folder:
 
 ```bash
-# Terminal 1 - Service A
-cd service-a
-npm run start:dev
-
-# Terminal 2 - Service B
-cd service-b
-npm run start:dev
-
-# Terminal 3 - Gateway
-cd gateway
-npm run start:dev
+npm run dev:all
 ```
+
+This will launch:
+- Gateway (port 3000)
+- Service A (port 3001)
+- Service B (port 3002)
+- Service Clients (port 3003)
+- Service Orders (RabbitMQ consumer)
+
+> You can still start any service individually with its own `npm run start:dev` if needed.
+## Load Testing (Artillery)
+
+You can simulate load and see RabbitMQ queueing in action using [Artillery](https://artillery.io/):
+
+```bash
+# (Optionnal) Install globally if needed
+npm install -g artillery
+
+# Run the load test scenario
+npm run test:artillery
+```
+
+This will send concurrent POST requests to `/clients/:id/generate-invoice` with random client IDs, demonstrating async queueing and processing.
 
 ## Testing
 

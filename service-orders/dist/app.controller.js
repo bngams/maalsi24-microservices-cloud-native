@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const microservices_1 = require("@nestjs/microservices");
 let AppController = class AppController {
     async handleInvoiceCreated(data, context) {
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 20000));
         console.log('📥 Received invoice from RabbitMQ:');
         console.log('-----------------------------------');
         console.log(`Invoice ID: ${data.invoiceId}`);

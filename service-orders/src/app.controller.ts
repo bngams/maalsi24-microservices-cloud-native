@@ -5,6 +5,7 @@ import { EventPattern, Payload, Ctx, RmqContext } from '@nestjs/microservices';
 export class AppController {
   @EventPattern('invoice_created')
   async handleInvoiceCreated(@Payload() data: any, @Ctx() context: RmqContext) {
+    await new Promise(resolve => setTimeout(resolve, Math.random() * 20000));
     console.log('📥 Received invoice from RabbitMQ:');
     console.log('-----------------------------------');
     console.log(`Invoice ID: ${data.invoiceId}`);

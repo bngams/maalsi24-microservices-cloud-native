@@ -7,7 +7,7 @@ export class AppService {
     @Inject('RABBITMQ_SERVICE') private readonly rabbitClient: ClientProxy,
   ) {}
 
-  async generateInvoice(clientId: string) {
+  generateInvoice(clientId: string) {
     const invoiceData = {
       invoiceId: `INV-${Date.now()}`,
       clientId: clientId,
