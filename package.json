@@ -1,0 +1,24 @@
+{
+  "name": "archi-cloud-native-microservices",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "gateway",
+    "service-a",
+    "service-b",
+    "service-clients",
+    "service-orders"
+  ],
+  "scripts": {
+    "dev:gateway": "cd gateway && npm run start:dev",
+    "dev:service-a": "cd service-a && npm run start:dev",
+    "dev:service-b": "cd service-b && npm run start:dev",
+    "dev:service-clients": "cd service-clients && npm run start:dev",
+    "dev:service-orders": "cd service-orders && npm run start:dev",
+    "dev:all": "turbo run start:dev --parallel"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.1"
+  },
+  "packageManager": "npm@10.2.0"
+}
